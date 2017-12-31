@@ -3,7 +3,13 @@ program Demo.Client;
 uses
   Vcl.Forms,
   Client in 'Client.pas' {Form2},
-  IXDBroadcaster in '..\Src\IXDBroadcaster.pas';
+  XDListener in '..\Src\XDListener.pas',
+  XDMessagingClient in '..\Src\XDMessagingClient.pas',
+  Listeners in '..\Src\Entities\Listeners.pas',
+  XDBroadcaster in '..\Src\XDBroadcaster.pas',
+  Broadcasters in '..\Src\Entities\Broadcasters.pas',
+  XDWinMsgBroadcaster in '..\Src\WindowsMessaging\XDWinMsgBroadcaster.pas',
+  Serializer in '..\Src\Serialization\Serializer.pas';
 
 {$R *.res}
 
