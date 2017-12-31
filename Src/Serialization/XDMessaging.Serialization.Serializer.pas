@@ -1,4 +1,4 @@
-unit Serializer;
+unit XDMessaging.Serialization.Serializer;
 
 interface
 type

@@ -2,7 +2,7 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Form2'
-  ClientHeight = 300
+  ClientHeight = 403
   ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,6 +12,7 @@ object Form2: TForm2
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -20,5 +21,13 @@ object Form2: TForm2
     Width = 31
     Height = 13
     Caption = 'Label1'
+  end
+  object Button1: TButton
+    Left = 376
+    Top = 56
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 0
   end
 end

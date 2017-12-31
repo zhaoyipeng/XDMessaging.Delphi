@@ -103,13 +103,17 @@
             <Form>Form2</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Src\XDListener.pas"/>
-        <DCCReference Include="..\Src\XDMessagingClient.pas"/>
-        <DCCReference Include="..\Src\Entities\Listeners.pas"/>
+        <DCCReference Include="..\Src\Serialization\XDMessaging.Serialization.Serializer.pas"/>
+        <DCCReference Include="..\Src\Messages\XDMessaging.Messages.DataGram.pas"/>
+        <DCCReference Include="..\Src\WinMsgDataGram.pas"/>
         <DCCReference Include="..\Src\XDBroadcaster.pas"/>
-        <DCCReference Include="..\Src\Entities\Broadcasters.pas"/>
-        <DCCReference Include="..\Src\WindowsMessaging\XDWinMsgBroadcaster.pas"/>
-        <DCCReference Include="..\Src\Serialization\Serializer.pas"/>
+        <DCCReference Include="..\Src\XDListener.pas"/>
+        <DCCReference Include="..\Src\XDMessaging.Messages.pas"/>
+        <DCCReference Include="..\Src\XDMessaging.Transport.WindowsMessaging.WindowEnumFilter.pas"/>
+        <DCCReference Include="..\Src\XDMessagingClient.pas"/>
+        <DCCReference Include="..\Src\XDMessaging.Transport.WindowsMessaging.XDWinMsgBroadcaster.pas"/>
+        <DCCReference Include="..\Src\XDMessaging.Transport.WindowsMessaging.XDWinMsgListener.pas"/>
+        <DCCReference Include="..\Src\XDMessaging.Transport.WindowsMessaging.WindowsEnum.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
