@@ -1,10 +1,10 @@
-unit XDMessagingClient;
+unit XDMessaging.XDMessagingClient;
 
 interface
 
 uses
-  XDBroadcaster,
-  XDListener,
+  XDMessaging.XDBroadcaster,
+  XDMessaging.XDListener,
   XDMessaging.Serialization.Serializer;
 
 type
@@ -25,7 +25,7 @@ type
     FSerializer: TSerializer;
   public
     constructor Create(client: TXDMessagingClient; ASerializer: TSerializer);
-    function GetWindowsMessagingListener: IXDListener;
+    function GetListener: IXDListener;
   end;
 
   TXDMessagingClient = class
@@ -68,7 +68,7 @@ begin
   FSerializer := ASerializer;
 end;
 
-function TListeners.GetWindowsMessagingListener: IXDListener;
+function TListeners.GetListener: IXDListener;
 begin
   Result := TXDWinMsgListener.Create(FSerializer);
 end;

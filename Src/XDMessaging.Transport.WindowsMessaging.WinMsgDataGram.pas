@@ -1,4 +1,4 @@
-unit WinMsgDataGram;
+unit XDMessaging.Transport.WindowsMessaging.WinMsgDataGram;
 
 interface
 

@@ -1,4 +1,4 @@
-unit XDBroadcaster;
+unit XDMessaging.XDBroadcaster;
 
 interface
 type

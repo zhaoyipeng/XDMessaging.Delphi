@@ -1,14 +1,14 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{DD176333-6451-48B0-9C4D-57BE19C2BAC6}</ProjectGuid>
+        <ProjectGuid>{C0BCF3A0-03E1-4EEB-BFEE-912FBBCAA954}</ProjectGuid>
         <ProjectVersion>18.2</ProjectVersion>
-        <FrameworkType>VCL</FrameworkType>
-        <MainSource>Demo.Client.dpr</MainSource>
+        <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
-        <AppType>Application</AppType>
+        <AppType>Console</AppType>
+        <MainSource>XDMessaging.dpr</MainSource>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -34,14 +34,8 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
-        <Cfg_2_Win32>true</Cfg_2_Win32>
-        <CfgParent>Cfg_2</CfgParent>
-        <Cfg_2>true</Cfg_2>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_DcuOutput>.</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
         <DCC_N>false</DCC_N>
@@ -50,19 +44,15 @@
         <DCC_K>false</DCC_K>
         <DCC_UsePackage>RESTComponents;emsclientfiredac;FireDACIBDriver;emsclient;FireDACCommon;RESTBackendComponents;soapserver;CloudService;FireDACCommonDriver;inet;FireDAC;FireDACSqliteDriver;soaprtl;soapmidas;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
-        <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
-        <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <SanitizedProjectName>Demo_Client</SanitizedProjectName>
+        <DCC_UnitSearchPath>$(BDS)\Source\DUnit\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_Define>_CONSOLE_TESTRUNNER;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>DBXSqliteDriver;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;TeeDB925;FMXTeeImport925;vclactnband;vclFireDAC;FMXComponents;DataSnapFireDAC;svnui;tethering;JvGlobus;FireDACADSDriver;JvPluginSystem;DBXMSSQLDriver;JvMM;tmsexdXE10_2;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;PngComponentsD;vcltouch;JvBands;vcldb;bindcompfmx;svn;Intraweb;DBXOracleDriver;JvJans;JvNet;inetdb;JvAppFrm;CEF4Delphi;FMXTeePro925;RaizeComponentsVcl;TeeImport925;JvDotNetCtrls;emsedge;RaizeComponentsVclDb;fmx;fmxdae;vclib;JvWizards;FMXTeeLanguage925;FireDACDBXDriver;dbexpress;IndyCore;OnGuardDR;Tee925;FMXTeeDB925;vclx;JvPageComps;dsnap;DataSnapCommon;JvDB;TeeWorld925;TeeTree2D25Tee9;DataSnapConnectors;VCLRESTComponents;JclDeveloperTools;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;FireDACMySQLDriver;DBXFirebirdDriver;JvCmp;JvHMI;FireDACCommonODBC;DataSnapClient;bindcompdbx;JvCustom;GR32_D;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;JvXPCtrls;IndySystem;tmsxlsdXE10_2;FireDACDb2Driver;TeeUI925;GLScene_RunTime;dsnapcon;FmxTeeUI925;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;Jcl;TeeMaker125;JvCore;emshosting;JvCrypt;FireDACPgDriver;ibmonitor;FireDACASADriver;TeePro925;DBXOdbcDriver;FireDACTDataDriver;TeeGL925;DbxCommonDriver;tmswizdXE10_2;JvDlgs;ibxpress;JvManagedThreads;JvRuntimeDesign;DataSnapServer;xmlrtl;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;FireDACDSDriver;DbxClientDriver;tmsdXE10_2;DBXSybaseASADriver;JvTimeFramework;CustomIPTransport;vcldsnap;TsiLang_XE_Tokyo_r;JvSystem;JvStdCtrls;GR32_R;SynEditDR;bindcomp;appanalytics;FMXTree25;DBXInformixDriver;LockBox3DR;IndyIPClient;E111_R;bindcompvcl;JvDocking;dbxcds;VclSmp;JvPascalInterpreter;adortl;FireDACODBCDriver;TeeImage925;FMXTee925;JclVcl;DataSnapIndy10ServerTransport;TeeLanguage925;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;JvControls;JvPrintPreview;FMXPlanPkg;JclContainers;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>DBXSqliteDriver;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;TeeDB925;ZRRockyModel;vclactnband;ZRLithPack;vclFireDAC;FMXComponents;DataSnapFireDAC;svnui;tethering;JvGlobus;FireDACADSDriver;JvPluginSystem;DBXMSSQLDriver;JvMM;tmsexdXE10_2;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;JvBands;vcldb;bindcompfmx;svn;Intraweb;DBXOracleDriver;JvJans;JvNet;inetdb;JvAppFrm;CEF4Delphi;RaizeComponentsVcl;TeeImport925;MIT3DPkg;JvDotNetCtrls;emsedge;RaizeComponentsVclDb;fmx;fmxdae;NativeXmlPkg;vclib;ConTEXTComponentsDR;JvWizards;FireDACDBXDriver;dbexpress;IndyCore;Tee925;GdiPlus;ALGLIB;vclx;JvPageComps;dsnap;DataSnapCommon;JvDB;TeeWorld925;DataSnapConnectors;VCLRESTComponents;mbColorLib;ZRZonationModel;JclDeveloperTools;SmartStorage;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;FireDACMySQLDriver;DBXFirebirdDriver;JvCmp;JvHMI;ZRLicense;FireDACCommonODBC;DataSnapClient;ZRCore;FMXComponentEd;bindcompdbx;JvCustom;ZRGraph;GR32_D;vcl;DBXSybaseASEDriver;IndyIPServer;JvXPCtrls;PngComponents;IndySystem;tmsxlsdXE10_2;FireDACDb2Driver;TeeUI925;IndyIPCommon;GLScene_RunTime;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;ZRComponnets;Jcl;JvCore;emshosting;ColorMapComponents;JvCrypt;FireDACPgDriver;ibmonitor;FireDACASADriver;TeePro925;DBXOdbcDriver;FireDACTDataDriver;TeeGL925;DbxCommonDriver;tmswizdXE10_2;JvDlgs;ibxpress;JvManagedThreads;JvRuntimeDesign;DataSnapServer;xmlrtl;DataSnapNativeClient;fmxobj;vclwinx;ibxbindings;rtl;FireDACDSDriver;DbxClientDriver;TsiLang_XE_Tokyo_r;DBXSybaseASADriver;BCEditor.Delphi.Seattle.Runtime;CustomIPTransport;vcldsnap;tmsdXE10_2;JvSystem;JvStdCtrls;JvTimeFramework;SynEditDR;GraphPackage;bindcomp;appanalytics;GR32_R;DBXInformixDriver;LockBox3DR;UnitSystem;IndyIPClient;bindcompvcl;SmartComponents;AlgorithmProvider;JvDocking;dbxcds;VclSmp;JvPascalInterpreter;adortl;FireDACODBCDriver;TeeImage925;JclVcl;DataSnapIndy10ServerTransport;TeeLanguage925;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;JvControls;JvPrintPreview;FMXPlanPkg;JclContainers;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -74,8 +64,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
-        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -83,30 +71,13 @@
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
-    </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Client.pas">
-            <Form>MessagingDemoForm</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
+        <DCCReference Include="TestXDMessaging.Serialization.pas"/>
         <DCCReference Include="..\Src\XDMessaging.Serialization.Serializer.pas"/>
         <DCCReference Include="..\Src\XDMessaging.Messages.DataGram.pas"/>
-        <DCCReference Include="..\Src\WinMsgDataGram.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.XDBroadcaster.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.XDListener.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.Messages.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.Transport.WindowsMessaging.WindowEnumFilter.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.XDMessagingClient.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.Transport.WindowsMessaging.XDWinMsgBroadcaster.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.Transport.WindowsMessaging.XDWinMsgListener.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.Transport.WindowsMessaging.WindowsEnum.pas"/>
-        <DCCReference Include="..\Src\XDMessaging.RegisterWithClient.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -125,13 +96,33 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">Demo.Client.dpr</Source>
+                    <Source Name="MainSource">XDMessaging.dpr</Source>
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Win32\Debug\Demo.Client.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Debug\XDMessaging.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>Demo_Client.exe</RemoteName>
+                        <RemoteName>XDMessaging.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -555,7 +546,9 @@
                 <Platform value="Win32">True</Platform>
             </Platforms>
             <UnitTesting>
-                <TestProjectName>C:\Develop\Delphi\Group\XDMessaging.Delphi\Tests\XDMessaging.dproj</TestProjectName>
+                <TestFramework>DUnit / Delphi Win32</TestFramework>
+                <TestRunner>GUI</TestRunner>
+                <SourceProjectName>C:\Develop\Delphi\Group\XDMessaging.Delphi\Demo\Demo.Client.dproj</SourceProjectName>
             </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

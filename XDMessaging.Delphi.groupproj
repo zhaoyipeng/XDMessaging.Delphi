@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8B3132F5-F5E2-4AAA-9EBB-FBEA86BC6EC6}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Demo\Demo.Client.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tests\XDMessaging.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Demo_Client">
+        <MSBuild Projects="Demo\Demo.Client.dproj"/>
+    </Target>
+    <Target Name="Demo_Client:Clean">
+        <MSBuild Projects="Demo\Demo.Client.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Demo_Client:Make">
+        <MSBuild Projects="Demo\Demo.Client.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="XDMessaging">
+        <MSBuild Projects="Tests\XDMessaging.dproj"/>
+    </Target>
+    <Target Name="XDMessaging:Clean">
+        <MSBuild Projects="Tests\XDMessaging.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="XDMessaging:Make">
+        <MSBuild Projects="Tests\XDMessaging.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Demo_Client;XDMessaging"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Demo_Client:Clean;XDMessaging:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Demo_Client:Make;XDMessaging:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

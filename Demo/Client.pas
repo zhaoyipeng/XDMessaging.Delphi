@@ -6,8 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  XDListener,
-  XDMessagingClient;
+  XDMessaging.XDListener,
+  XDMessaging.XDMessagingClient;
 
 type
   TMessagingDemoForm = class(TForm)
@@ -33,7 +33,7 @@ implementation
 procedure TMessagingDemoForm.FormCreate(Sender: TObject);
 begin
   FClient := TXDMessagingClient.Create;
-  FListener := FClient.Listeners.GetWindowsMessagingListener;
+  FListener := FClient.Listeners.GetListener;
 end;
 
 procedure TMessagingDemoForm.FormDestroy(Sender: TObject);

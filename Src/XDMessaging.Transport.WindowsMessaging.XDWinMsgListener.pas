@@ -6,9 +6,9 @@ uses
   System.SysUtils,
   System.Generics.Collections,
   Vcl.Controls,
-  XDMessagingClient,
+  XDMessaging.XDMessagingClient,
   XDMessaging.Serialization.Serializer,
-  XDListener;
+  XDMessaging.XDListener;
 
 type
   TXDWinMsgListener = class(TWinControl, IXDListener)

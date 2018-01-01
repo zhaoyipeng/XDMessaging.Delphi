@@ -6,12 +6,12 @@ uses
   Winapi.Windows,
   Winapi.Messages,
   System.Classes,
-  XDBroadcaster,
+  XDMessaging.XDBroadcaster,
   XDMessaging.Serialization.Serializer,
   XDMessaging.Transport.WindowsMessaging.WindowEnumFilter,
   XDMessaging.Transport.WindowsMessaging.XDWinMsgListener,
   XDMessaging.Transport.WindowsMessaging.WindowsEnum,
-  WinMsgDataGram;
+  XDMessaging.Transport.WindowsMessaging.WinMsgDataGram;
 
 type
   TXDWinMsgBroadcaster = class(TInterfacedObject, IXDBroadcaster)
