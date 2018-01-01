@@ -1,7 +1,7 @@
-object Form2: TForm2
+object MessagingDemoForm: TMessagingDemoForm
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'Delphi Messaging Demo'
   ClientHeight = 403
   ClientWidth = 635
   Color = clBtnFace

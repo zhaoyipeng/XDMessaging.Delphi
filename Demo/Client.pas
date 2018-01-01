@@ -3,13 +3,14 @@ unit Client;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   XDListener,
   XDMessagingClient;
 
 type
-  TForm2 = class(TForm)
+  TMessagingDemoForm = class(TForm)
     Label1: TLabel;
     Button1: TButton;
     procedure FormCreate(Sender: TObject);
@@ -23,19 +24,19 @@ type
   end;
 
 var
-  Form2: TForm2;
+  MessagingDemoForm: TMessagingDemoForm;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm2.FormCreate(Sender: TObject);
+procedure TMessagingDemoForm.FormCreate(Sender: TObject);
 begin
   FClient := TXDMessagingClient.Create;
   FListener := FClient.Listeners.GetWindowsMessagingListener;
 end;
 
-procedure TForm2.FormDestroy(Sender: TObject);
+procedure TMessagingDemoForm.FormDestroy(Sender: TObject);
 begin
   FClient.Free;
 end;

@@ -3,16 +3,24 @@ unit XDMessaging.Messages.DataGram;
 interface
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  System.JSON.Serializers;
 
 type
   TDataGram = class
   private const
     AppVersion = '1.1';
   private
+    [JsonName('type')]
     FAssemblyQualifiedName: string;
+
+    [JsonName('channel')]
     FChannel: string;
+
+    [JsonName('message')]
     FMessage: string;
+
+    [JsonName('ver')]
     FVersion: string;
     procedure SetAssemblyQualifiedName(const Value: string);
     procedure SetChannel(const Value: string);
@@ -20,15 +28,18 @@ type
     procedure SetVersion(const Value: string);
   public
     constructor Create; overload;
-    constructor Create(const AChannel, AnAssemblyQualifiedName, AMessage: string); overload;
+    constructor Create(const AChannel, AnAssemblyQualifiedName,
+      AMessage: string); overload;
     function IsValid: Boolean;
   published
-    property AssemblyQualifiedName: string read FAssemblyQualifiedName write SetAssemblyQualifiedName;
+    property AssemblyQualifiedName: string read FAssemblyQualifiedName
+      write SetAssemblyQualifiedName;
     property Channel: string read FChannel write SetChannel;
     property Message: string read FMessage write SetMessage;
     property Version: string read FVersion write SetVersion;
     function ToString: string;
   end;
+
 implementation
 
 { TDataGram }

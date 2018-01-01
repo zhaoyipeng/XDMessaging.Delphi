@@ -4,6 +4,7 @@ interface
 
 uses
   Winapi.Windows,
+  System.JSON.Serializers,
   XDMessaging.Serialization.Serializer,
   XDMessaging.Messages.DataGram;
 
