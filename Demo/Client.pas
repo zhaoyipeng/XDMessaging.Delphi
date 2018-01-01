@@ -108,7 +108,7 @@ begin
   channel := e.DataGram.Channel.ToLower;
   if channel.Equals('status') then
   begin
-    //UpdateDisplayText(e.DataGram.Channel, e.DataGram.Message);
+    UpdateDisplayText(e.DataGram.Channel, e.DataGram.Message);
   end
   else
   begin

@@ -47,7 +47,7 @@ implementation
 constructor TXDWinMsgListener.Create(AOwner: TComponent; ASerializer: TSerializer);
 begin
   inherited Create(AOwner);
-  Parent := AOwner as TWinControl;
+//  Parent := AOwner as TWinControl;
   FSerializer := ASerializer;
   FDisposeLock := TObject.Create;
   FOnMessageReceived := nil;
@@ -67,6 +67,7 @@ begin
   s := 'TheCodeKing.Net.XDServices.' + id.Substring(1, id.Length-2);
   Params.Caption := PChar(s);
 //  Params.WndParent := 0;
+  Params.Style := Params.Style and not (WS_CHILD or WS_GROUP or WS_TABSTOP);
 end;
 
 destructor TXDWinMsgListener.Destroy;

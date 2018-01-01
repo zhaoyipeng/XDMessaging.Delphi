@@ -63,7 +63,7 @@ begin
   FAllocatedMemory := False;
   FDataStruct := PCopyDataStruct(lpParam)^;
   SetLength(bytes, FDataStruct.cbData);
-  Move(FDataStruct.lpData, bytes[0], FDataStruct.cbData);
+  Move(FDataStruct.lpData^, bytes[0], FDataStruct.cbData);
   rawmessage := TEncoding.Default.GetString(bytes);
   FDataGram := FSerializer.Deserialize<TDataGram>(rawmessage);
 end;
