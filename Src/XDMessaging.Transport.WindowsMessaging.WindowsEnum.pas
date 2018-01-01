@@ -54,7 +54,7 @@ begin
     FWinEnumList := TList<HWND>.Create
   else
     FWinEnumList.Clear;
-  EnumWindows(@OnWindowEnum, LPARAM(FWinEnumList));
+  EnumWindows(@OnWindowEnum, LPARAM(Self));
   Result := FWinEnumList;
 end;
 

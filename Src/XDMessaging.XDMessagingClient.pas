@@ -3,6 +3,7 @@ unit XDMessaging.XDMessagingClient;
 interface
 
 uses
+  System.Classes,
   XDMessaging.XDBroadcaster,
   XDMessaging.XDListener,
   XDMessaging.Serialization.Serializer;
@@ -18,14 +19,12 @@ type
     function GetBroadcaster: IXDBroadcaster;
   end;
 
-  XDMessageHandler = procedure (sender: TObject; e: TObject) of object;
-
   TListeners = class
   private
     FSerializer: TSerializer;
   public
     constructor Create(client: TXDMessagingClient; ASerializer: TSerializer);
-    function GetListener: IXDListener;
+    function GetListener(AOwner: TComponent): IXDListener;
   end;
 
   TXDMessagingClient = class
@@ -68,9 +67,10 @@ begin
   FSerializer := ASerializer;
 end;
 
-function TListeners.GetListener: IXDListener;
+function TListeners.GetListener(AOwner: TComponent): IXDListener;
 begin
-  Result := TXDWinMsgListener.Create(FSerializer);
+  Result := TXDWinMsgListener.Create(AOwner, FSerializer);
+  Result.Parent := AOwner;
 end;
 
 { TXDMessagingClient }

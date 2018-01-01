@@ -3,6 +3,7 @@ unit XDMessaging.RegisterWithClient;
 interface
 
 uses
+  System.Classes,
   XDMessaging.XDBroadcaster,
   XDMessaging.XDListener,
   XDMessaging.XDMessagingClient;
@@ -11,7 +12,7 @@ type
   TRegisterWithClient = class
   public
     class function GetWindowsMessagingBroadcaster(client: TBroadcasters ): IXDBroadcaster;
-    class function GetWindowsMessagingListener(client: TListeners ): IXDListener;
+    class function GetWindowsMessagingListener(AOwner: TComponent; client: TListeners ): IXDListener;
   end;
 implementation
 
@@ -24,9 +25,9 @@ begin
 end;
 
 class function TRegisterWithClient.GetWindowsMessagingListener(
-  client: TListeners): IXDListener;
+  AOwner: TComponent; client: TListeners): IXDListener;
 begin
-  Result := client.GetListener;
+  Result := client.GetListener(AOwner);
 end;
 
 end.
