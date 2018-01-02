@@ -24,7 +24,7 @@ type
     FSerializer: TSerializer;
   public
     constructor Create(client: TXDMessagingClient; ASerializer: TSerializer);
-    function GetListener(AOwner: TComponent): IXDListener;
+    function GetListener: IXDListener;
   end;
 
   TXDMessagingClient = class
@@ -34,9 +34,11 @@ type
     FListeners: TListeners;
     FBroadcasters: TBroadcasters;
     class constructor Create;
+    class destructor Destroy;
   public
     constructor Create;
     destructor Destroy; override;
+    class function DefaultSerializer: TSerializer;
     property Broadcasters: TBroadcasters read FBroadcasters;
     property Listeners: TListeners read FListeners;
   end;
@@ -67,10 +69,9 @@ begin
   FSerializer := ASerializer;
 end;
 
-function TListeners.GetListener(AOwner: TComponent): IXDListener;
+function TListeners.GetListener: IXDListener;
 begin
-  Result := TXDWinMsgListener.Create(AOwner, FSerializer);
-  Result.Parent := AOwner;
+  Result := TXDWinMsgListener.Create(FSerializer);
 end;
 
 { TXDMessagingClient }
@@ -79,6 +80,16 @@ constructor TXDMessagingClient.Create;
 begin
   FListeners := TListeners.Create(Self, FSerializer);
   FBroadcasters := TBroadcasters.Create(Self, FSerializer);
+end;
+
+class destructor TXDMessagingClient.Destroy;
+begin
+  FSerializer.Free;
+end;
+
+class function TXDMessagingClient.DefaultSerializer: TSerializer;
+begin
+  Result := FSerializer;
 end;
 
 destructor TXDMessagingClient.Destroy;

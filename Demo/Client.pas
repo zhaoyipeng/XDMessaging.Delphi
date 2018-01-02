@@ -9,6 +9,7 @@ uses
   Vcl.ExtCtrls, Vcl.ComCtrls,
   XDMessaging.XDListener,
   XDMessaging.XDBroadcaster,
+  XDMessaging.Messages.TypedDataGram,
   XDMessaging.XDMessagingClient,
   XDMessaging.XDMessageEventArgs,
   FormattedUserMessage;
@@ -26,6 +27,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnSendClick(Sender: TObject);
+    procedure chkChannel2Click(Sender: TObject);
+    procedure chkChannel1Click(Sender: TObject);
   private
     { Private declarations }
     FUniqueInstanceName: string;
@@ -65,6 +68,40 @@ begin
   SendMessage;
 end;
 
+procedure TMessagingDemoForm.chkChannel1Click(Sender: TObject);
+var
+  AMessage: string;
+begin
+  if (chkChannel1.Checked) then
+  begin
+    FListener.RegisterChannel('BinaryChannel1');
+    AMessage := FUniqueInstanceName + ' is registering Channel1.';
+  end
+  else
+  begin
+    FListener.UnRegisterChannel('BinaryChannel1');
+    AMessage := FUniqueInstanceName + ' is unregistering Channel1.';
+  end;
+  FBroadcast.SendToChannel('Status', AMessage);
+end;
+
+procedure TMessagingDemoForm.chkChannel2Click(Sender: TObject);
+var
+  AMessage: string;
+begin
+  if (chkChannel2.Checked) then
+  begin
+    FListener.RegisterChannel('BinaryChannel2');
+    AMessage := FUniqueInstanceName + ' is registering Channel2.';
+  end
+  else
+  begin
+    FListener.UnRegisterChannel('BinaryChannel2');
+    AMessage := FUniqueInstanceName + ' is unregistering Channel2.';
+  end;
+  FBroadcast.SendToChannel('Status', AMessage);
+end;
+
 procedure TMessagingDemoForm.FormCreate(Sender: TObject);
 begin
   FUniqueInstanceName := Format('%s-%d', [GetComputerNetName, Handle]);
@@ -79,7 +116,7 @@ end;
 
 procedure TMessagingDemoForm.Initialize;
 begin
-  FListener := FClient.Listeners.GetListener(Self);
+  FListener := FClient.Listeners.GetListener;
   FListener.OnMessageReceived := OnMessageReceived;
 
   if (chkStatus.Checked) then
@@ -104,6 +141,7 @@ procedure TMessagingDemoForm.OnMessageReceived(sender: TObject;
   e: TXDMessageEventArgs);
 var
   channel: string;
+  typedDataGram: TTypedDataGram<TFormattedUserMessage>;
 begin
   channel := e.DataGram.Channel.ToLower;
   if channel.Equals('status') then
@@ -114,8 +152,9 @@ begin
   begin
     if (e.DataGram.AssemblyQualifiedName = TFormattedUserMessage.ClassName) then
     begin
-      //TypedDataGram<FormattedUserMessage> typedDataGram = e.DataGram;
-      //UpdateDisplayText(typedDataGram.Channel, typedDataGram.Message.FormattedTextMessage);
+      typedDataGram := TTypedDataGram<TFormattedUserMessage>.Create(
+        e.DataGram, TXDMessagingClient.DefaultSerializer);
+      UpdateDisplayText(typedDataGram.Channel, typedDataGram.Message.FormattedTextMessage);
     end
     else
     begin

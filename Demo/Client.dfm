@@ -55,6 +55,7 @@ object MessagingDemoForm: TMessagingDemoForm
         Checked = True
         State = cbChecked
         TabOrder = 0
+        OnClick = chkChannel1Click
       end
       object chkChannel2: TCheckBox
         Left = 16
@@ -63,6 +64,7 @@ object MessagingDemoForm: TMessagingDemoForm
         Height = 17
         Caption = 'Channel2'
         TabOrder = 1
+        OnClick = chkChannel2Click
       end
       object chkStatus: TCheckBox
         Left = 16

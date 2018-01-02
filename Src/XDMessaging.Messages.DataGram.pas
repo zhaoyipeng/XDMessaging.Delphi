@@ -7,7 +7,7 @@ uses
   System.JSON.Serializers;
 
 type
-  TDataGram = class
+  TDataGram = class(TInterfacedObject)
   private const
     AppVersion = '1.1';
   private

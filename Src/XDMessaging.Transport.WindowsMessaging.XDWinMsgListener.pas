@@ -26,7 +26,7 @@ type
     procedure CreateParams(var Params: TCreateParams); override;
     procedure WndProc(var Message: TMessage); override;
   public
-    constructor Create(AOwner: TComponent; ASerializer: TSerializer);
+    constructor Create(ASerializer: TSerializer);
     destructor Destroy; override;
     class function GetChannelKey(const channelName: string): string;
 
@@ -44,10 +44,9 @@ implementation
 
 { TXDWinMsgListener }
 
-constructor TXDWinMsgListener.Create(AOwner: TComponent; ASerializer: TSerializer);
+constructor TXDWinMsgListener.Create(ASerializer: TSerializer);
 begin
-  inherited Create(AOwner);
-//  Parent := AOwner as TWinControl;
+  inherited Create(nil);
   FSerializer := ASerializer;
   FDisposeLock := TObject.Create;
   FOnMessageReceived := nil;
@@ -66,7 +65,7 @@ begin
   id := TGUID.NewGuid.ToString;
   s := 'TheCodeKing.Net.XDServices.' + id.Substring(1, id.Length-2);
   Params.Caption := PChar(s);
-//  Params.WndParent := 0;
+  Params.WndParent := 0;
   Params.Style := Params.Style and not (WS_CHILD or WS_GROUP or WS_TABSTOP);
 end;
 
@@ -142,13 +141,9 @@ begin
     Exit;
   end;
   ADataGram := TWinMsgDataGram.FromPointer(Message.LParam, FSerializer);
-  try
-    if (Assigned(FOnMessageReceived)) and (ADataGram <> nil) and (ADataGram.IsValid) then
-    begin
-      FOnMessageReceived(Self, TXDMessageEventArgs.Create(ADataGram.DataGram));
-    end;
-  finally
-    ADataGram.Free;
+  if (Assigned(FOnMessageReceived)) and (ADataGram <> nil) and (ADataGram.IsValid) then
+  begin
+    FOnMessageReceived(Self, TXDMessageEventArgs.Create(ADataGram.DataGram));
   end;
 end;
 

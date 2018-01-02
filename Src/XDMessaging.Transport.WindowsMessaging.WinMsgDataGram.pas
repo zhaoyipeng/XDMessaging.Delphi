@@ -11,7 +11,7 @@ uses
   XDMessaging.Messages.DataGram;
 
 type
-  TWinMsgDataGram = class
+  TWinMsgDataGram = class(TInterfacedObject)
   private
     FDataGram: TDataGram;
     FSerializer: TSerializer ;

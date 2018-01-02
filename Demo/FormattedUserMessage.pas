@@ -2,9 +2,14 @@ unit FormattedUserMessage;
 
 interface
 
+uses
+  System.SysUtils,
+  System.JSON.Serializers;
+
 type
   TFormattedUserMessage = class
   private
+    [JsonName('FormattedTextMessage')]
     FFormattedTextMessage: string;
     procedure SetFormattedTextMessage(const Value: string);
   public
@@ -19,7 +24,7 @@ implementation
 constructor TFormattedUserMessage.Create(const formatMessage: string;
   const Args: array of const);
 begin
-
+  FFormattedTextMessage := Format(formatMessage, Args);
 end;
 
 procedure TFormattedUserMessage.SetFormattedTextMessage(const Value: string);

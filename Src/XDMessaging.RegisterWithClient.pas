@@ -27,7 +27,7 @@ end;
 class function TRegisterWithClient.GetWindowsMessagingListener(
   AOwner: TComponent; client: TListeners): IXDListener;
 begin
-  Result := client.GetListener(AOwner);
+  Result := client.GetListener;
 end;
 
 end.

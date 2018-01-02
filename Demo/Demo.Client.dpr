@@ -15,7 +15,8 @@ uses
   XDMessaging.Transport.WindowsMessaging.WindowsEnum in '..\Src\XDMessaging.Transport.WindowsMessaging.WindowsEnum.pas',
   XDMessaging.RegisterWithClient in '..\Src\XDMessaging.RegisterWithClient.pas',
   FormattedUserMessage in 'FormattedUserMessage.pas',
-  XDMessaging.XDMessageEventArgs in '..\Src\XDMessaging.XDMessageEventArgs.pas';
+  XDMessaging.XDMessageEventArgs in '..\Src\XDMessaging.XDMessageEventArgs.pas',
+  XDMessaging.Messages.TypedDataGram in '..\Src\XDMessaging.Messages.TypedDataGram.pas';
 
 {$R *.res}
 
