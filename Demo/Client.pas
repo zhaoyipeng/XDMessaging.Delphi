@@ -29,6 +29,7 @@ type
     procedure btnSendClick(Sender: TObject);
     procedure chkChannel2Click(Sender: TObject);
     procedure chkChannel1Click(Sender: TObject);
+    procedure edtInputKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     FUniqueInstanceName: string;
@@ -100,6 +101,14 @@ begin
     AMessage := FUniqueInstanceName + ' is unregistering Channel2.';
   end;
   FBroadcast.SendToChannel('Status', AMessage);
+end;
+
+procedure TMessagingDemoForm.edtInputKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    btnSend.Click;
+  end;
 end;
 
 procedure TMessagingDemoForm.FormCreate(Sender: TObject);
@@ -191,7 +200,7 @@ begin
 //            }
 
   displayTextBox.Lines.Append(AMessage);
-  displayTextBox.SelStart := Length(displayTextBox.Text) - AMessage.Length + 1;
+  displayTextBox.SelStart := Length(displayTextBox.Text) - AMessage.Length - 2;
   displayTextBox.SelLength := Length(AMessage);
   displayTextBox.SelAttributes.Color := textColor;
   displayTextBox.SelStart := Length(displayTextBox.Text);
@@ -211,7 +220,7 @@ begin
     textColor := clGreen
   else
     textColor := clBlue;
-  msg := channelName + ': ' + displayText + #13#10;
+  msg := channelName + ': ' + displayText;
   UpdateDisplayText(msg, textColor);
 end;
 

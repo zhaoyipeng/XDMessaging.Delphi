@@ -84,7 +84,7 @@ end;
 class function TXDWinMsgListener.GetChannelKey(
   const channelName: string): string;
 begin
-  Result := 'TheCodeKing.Net.XDServices.'+channelName;
+  Result := 'TheCodeKing.Delphi.XDServices.'+channelName;
 end;
 
 function TXDWinMsgListener.GetOnMessageReceived: XDMessageHandler;

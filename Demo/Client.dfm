@@ -29,6 +29,7 @@ object MessagingDemoForm: TMessagingDemoForm
       Width = 233
       Height = 21
       TabOrder = 0
+      OnKeyPress = edtInputKeyPress
     end
     object btnSend: TButton
       Left = 247
