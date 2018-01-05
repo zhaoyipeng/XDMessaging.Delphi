@@ -9,6 +9,9 @@
         <Projects Include="Tests\XDMessaging.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Tests\XSuperObjectTest.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="XDMessaging:Make">
         <MSBuild Projects="Tests\XDMessaging.dproj" Targets="Make"/>
     </Target>
+    <Target Name="XSuperObjectTest">
+        <MSBuild Projects="Tests\XSuperObjectTest.dproj"/>
+    </Target>
+    <Target Name="XSuperObjectTest:Clean">
+        <MSBuild Projects="Tests\XSuperObjectTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="XSuperObjectTest:Make">
+        <MSBuild Projects="Tests\XSuperObjectTest.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Demo_Client;XDMessaging"/>
+        <CallTarget Targets="Demo_Client;XDMessaging;XSuperObjectTest"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Demo_Client:Clean;XDMessaging:Clean"/>
+        <CallTarget Targets="Demo_Client:Clean;XDMessaging:Clean;XSuperObjectTest:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Demo_Client:Make;XDMessaging:Make"/>
+        <CallTarget Targets="Demo_Client:Make;XDMessaging:Make;XSuperObjectTest:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -14,8 +14,7 @@ interface
 uses
   TestFramework,
   XDMessaging.Serialization.Serializer,
-  XDMessaging.Messages.DataGram,
-  System.JSON.Serializers;
+  XDMessaging.Messages.DataGram;
 
 type
   // Test methods for class TSerializer

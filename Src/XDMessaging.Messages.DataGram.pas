@@ -4,10 +4,16 @@ interface
 
 uses
   System.SysUtils,
-  System.JSON.Serializers;
+  XDMessaging.Serialization.Serializer,
+  {$IFDEF XD_VER320_up}
+  System.JSON.Serializers
+  {$ELSE}
+  XSuperObject
+  {$ENDIF}
+  ;
 
 type
-  TDataGram = class(TInterfacedObject)
+  TDataGram = class
   private const
     AppVersion = '1.1';
   private
@@ -31,10 +37,14 @@ type
     constructor Create(const AChannel, AnAssemblyQualifiedName,
       AMessage: string); overload;
     function IsValid: Boolean;
+    [ALIAS('type')]
     property AssemblyQualifiedName: string read FAssemblyQualifiedName
       write SetAssemblyQualifiedName;
+    [ALIAS('channel')]
     property Channel: string read FChannel write SetChannel;
+    [ALIAS('message')]
     property Message: string read FMessage write SetMessage;
+    [ALIAS('ver')]
     property Version: string read FVersion write SetVersion;
     function ToString: string; override;
   end;
