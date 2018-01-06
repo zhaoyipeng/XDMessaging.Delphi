@@ -12,7 +12,9 @@ uses
 type
   TFormattedUserMessage = class
   private
+    {$IFDEF XD_VER320_up}
     [JsonName('FormattedTextMessage')]
+    {$ENDIF}
     FFormattedTextMessage: string;
     procedure SetFormattedTextMessage(const Value: string);
   public

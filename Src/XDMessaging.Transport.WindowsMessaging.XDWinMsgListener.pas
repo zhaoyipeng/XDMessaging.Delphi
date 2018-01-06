@@ -17,7 +17,6 @@ uses
 type
   TXDWinMsgListener = class(TWinControl, IXDListener)
   private
-    FOwner: TComponent;
     FOnMessageReceived: XDMessageHandler;
     FDisposeLock: TObject;
     FSerializer: TSerializer ;
@@ -26,7 +25,7 @@ type
     procedure CreateParams(var Params: TCreateParams); override;
     procedure WndProc(var Message: TMessage); override;
   public
-    constructor Create(ASerializer: TSerializer);
+    constructor Create(ASerializer: TSerializer); reintroduce;
     destructor Destroy; override;
     class function GetChannelKey(const channelName: string): string;
 
