@@ -67,3 +67,4 @@ __recovery/
 /Tests/Win32/Debug/dunit.ini
 /Tests/XDMessaging.res
 /Tests/XSuperObjectTest.res
+/Demo/Demo.Client.res
