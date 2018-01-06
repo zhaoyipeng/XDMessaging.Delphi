@@ -92,6 +92,5 @@ object MessagingDemoForm: TMessagingDemoForm
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    Zoom = 100
   end
 end

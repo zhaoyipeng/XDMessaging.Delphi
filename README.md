@@ -1,4 +1,4 @@
-# XDMessaging.Delphi
+# XDMessaging.Delphi for Delphi XE8/10 Seattle/10.2 Tokyo
 This project ported from XDMessaging.Net project
 https://github.com/TheCodeKing/XDMessaging.Net
 
