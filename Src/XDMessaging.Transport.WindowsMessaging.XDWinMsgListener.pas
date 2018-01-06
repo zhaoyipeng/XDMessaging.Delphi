@@ -20,7 +20,6 @@ type
     FOnMessageReceived: XDMessageHandler;
     FDisposeLock: TObject;
     FSerializer: TSerializer ;
-    FDisposed: Boolean;
   protected
     procedure CreateParams(var Params: TCreateParams); override;
     procedure WndProc(var Message: TMessage); override;
@@ -97,10 +96,6 @@ var
 begin
   TMonitor.Enter(FDisposeLock);
   try
-//    if (disposed) then
-//    begin
-//       Raise Exception.Create('IXDListener: This instance has been disposed.');
-//    end;
     s := GetChannelKey(channelName);
     SetProp(Handle, PChar(s), Handle);
   finally
@@ -119,10 +114,6 @@ var
 begin
   TMonitor.Enter(FDisposeLock);
   try
-//    if (disposed)
-//                {
-//                    throw new ObjectDisposedException("IXDListener", "This instance has been disposed.");
-//                }
     s := GetChannelKey(channelName);
     RemoveProp(Handle, PChar(s));
   finally
