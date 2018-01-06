@@ -73,16 +73,16 @@ procedure TMessagingDemoForm.chkChannel1Click(Sender: TObject);
 var
   AMessage: string;
 begin
-//  if (chkChannel1.Checked) then
-//  begin
-//    FListener.RegisterChannel('BinaryChannel1');
-//    AMessage := FUniqueInstanceName + ' is registering Channel1.';
-//  end
-//  else
-//  begin
-//    FListener.UnRegisterChannel('BinaryChannel1');
-//    AMessage := FUniqueInstanceName + ' is unregistering Channel1.';
-//  end;
+  if (chkChannel1.Checked) then
+  begin
+    FListener.RegisterChannel('BinaryChannel1');
+    AMessage := FUniqueInstanceName + ' is registering Channel1.';
+  end
+  else
+  begin
+    FListener.UnRegisterChannel('BinaryChannel1');
+    AMessage := FUniqueInstanceName + ' is unregistering Channel1.';
+  end;
   FBroadcast.SendToChannel('Status', AMessage);
 end;
 
@@ -90,16 +90,16 @@ procedure TMessagingDemoForm.chkChannel2Click(Sender: TObject);
 var
   AMessage: string;
 begin
-//  if (chkChannel2.Checked) then
-//  begin
-//    FListener.RegisterChannel('BinaryChannel2');
-//    AMessage := FUniqueInstanceName + ' is registering Channel2.';
-//  end
-//  else
-//  begin
-//    FListener.UnRegisterChannel('BinaryChannel2');
-//    AMessage := FUniqueInstanceName + ' is unregistering Channel2.';
-//  end;
+  if (chkChannel2.Checked) then
+  begin
+    FListener.RegisterChannel('BinaryChannel2');
+    AMessage := FUniqueInstanceName + ' is registering Channel2.';
+  end
+  else
+  begin
+    FListener.UnRegisterChannel('BinaryChannel2');
+    AMessage := FUniqueInstanceName + ' is unregistering Channel2.';
+  end;
   FBroadcast.SendToChannel('Status', AMessage);
 end;
 
@@ -128,22 +128,22 @@ end;
 procedure TMessagingDemoForm.Initialize;
 begin
   FListener := FClient.Listeners.GetListener;
-//  FListener.OnMessageReceived := OnMessageReceived;
-//
-//  if (chkStatus.Checked) then
-//  begin
-//    FListener.RegisterChannel('Status');
-//  end;
-//
-//  if (chkChannel1.Checked) then
-//  begin
-//    FListener.RegisterChannel('BinaryChannel1');
-//  end;
+  FListener.OnMessageReceived := OnMessageReceived;
 
-//  if (chkChannel2.Checked) then
-//  begin
-//    FListener.RegisterChannel('BinaryChannel2');
-//  end;
+  if (chkStatus.Checked) then
+  begin
+    FListener.RegisterChannel('Status');
+  end;
+
+  if (chkChannel1.Checked) then
+  begin
+    FListener.RegisterChannel('BinaryChannel1');
+  end;
+
+  if (chkChannel2.Checked) then
+  begin
+    FListener.RegisterChannel('BinaryChannel2');
+  end;
 
   FBroadcast := FClient.Broadcasters.GetBroadcaster;
 end;
@@ -153,6 +153,7 @@ procedure TMessagingDemoForm.OnMessageReceived(sender: TObject;
 var
   channel: string;
   typedDataGram: TTypedDataGram<TFormattedUserMessage>;
+  msg: TFormattedUserMessage;
 begin
   channel := e.DataGram.Channel.ToLower;
   if channel.Equals('status') then
@@ -166,7 +167,9 @@ begin
       typedDataGram := TTypedDataGram<TFormattedUserMessage>.Create(
         e.DataGram, TXDMessagingClient.DefaultSerializer);
       try
-        UpdateDisplayText(typedDataGram.Channel, typedDataGram.Message.FormattedTextMessage);
+        msg := typedDataGram.Message;
+        UpdateDisplayText(typedDataGram.Channel, msg.FormattedTextMessage);
+        msg.Free;
       finally
         typedDataGram.Free;
       end;

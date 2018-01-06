@@ -48,7 +48,11 @@ var
   msg: T;
 begin
   msg := Message;
-  Result := msg <> nil;
+  try
+    Result := msg <> nil;
+  finally
+    msg.Free;
+  end;
 end;
 
 constructor TTypedDataGram<T>.Create(ADataGram: TDataGram;

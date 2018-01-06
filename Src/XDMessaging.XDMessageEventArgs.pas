@@ -7,7 +7,7 @@ uses
   XDMessaging.Messages.DataGram;
 
 type
-  TXDMessageEventArgs = class(TInterfacedObject)
+  TXDMessageEventArgs = class
   private
     FDataGram: TDataGram;
   public

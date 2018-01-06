@@ -134,6 +134,7 @@ end;
 procedure TXDWinMsgListener.WndProc(var Message: TMessage);
 var
   ADataGram: TWinMsgDataGram;
+  e: TXDMessageEventArgs;
 begin
   inherited;
   if (Message.Msg <> WM_COPYDATA) then
@@ -144,7 +145,12 @@ begin
   try
     if (Assigned(FOnMessageReceived)) and (ADataGram <> nil) and (ADataGram.IsValid) then
     begin
-      FOnMessageReceived(Self, TXDMessageEventArgs.Create(ADataGram.DataGram));
+      e := TXDMessageEventArgs.Create(ADataGram.DataGram);
+      try
+        FOnMessageReceived(Self, e);
+      finally
+        e.Free;
+      end;
     end;
   finally
     ADataGram.Free;

@@ -66,3 +66,4 @@ __recovery/
 *.stat
 /Tests/Win32/Debug/dunit.ini
 /Tests/XDMessaging.res
+/Tests/XSuperObjectTest.res
