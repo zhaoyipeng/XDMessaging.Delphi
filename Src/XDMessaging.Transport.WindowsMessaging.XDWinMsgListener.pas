@@ -141,9 +141,13 @@ begin
     Exit;
   end;
   ADataGram := TWinMsgDataGram.FromPointer(Message.LParam, FSerializer);
-  if (Assigned(FOnMessageReceived)) and (ADataGram <> nil) and (ADataGram.IsValid) then
-  begin
-    FOnMessageReceived(Self, TXDMessageEventArgs.Create(ADataGram.DataGram));
+  try
+    if (Assigned(FOnMessageReceived)) and (ADataGram <> nil) and (ADataGram.IsValid) then
+    begin
+      FOnMessageReceived(Self, TXDMessageEventArgs.Create(ADataGram.DataGram));
+    end;
+  finally
+    ADataGram.Free;
   end;
 end;
 

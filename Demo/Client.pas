@@ -116,6 +116,7 @@ begin
   FUniqueInstanceName := Format('%s-%d', [GetComputerNetName, Handle]);
   FClient := TXDMessagingClient.Create;
   Initialize;
+  TObject.Create;
 end;
 
 procedure TMessagingDemoForm.FormDestroy(Sender: TObject);
@@ -163,7 +164,11 @@ begin
     begin
       typedDataGram := TTypedDataGram<TFormattedUserMessage>.Create(
         e.DataGram, TXDMessagingClient.DefaultSerializer);
-      UpdateDisplayText(typedDataGram.Channel, typedDataGram.Message.FormattedTextMessage);
+      try
+        UpdateDisplayText(typedDataGram.Channel, typedDataGram.Message.FormattedTextMessage);
+      finally
+        typedDataGram.Free;
+      end;
     end
     else
     begin
@@ -179,13 +184,17 @@ begin
  if Length(edtInput.Text) > 0 then
  begin
     AMessage := TFormattedUserMessage.Create('%s says %s', [FUniqueInstanceName, edtInput.Text]);
-    if chkChannel1.Checked then
-    begin
-      FBroadcast.SendToChannel('BinaryChannel1', AMessage);
-    end;
-    if chkChannel2.Checked then
-    begin
-      FBroadcast.SendToChannel('BinaryChannel2', AMessage);
+    try
+      if chkChannel1.Checked then
+      begin
+        FBroadcast.SendToChannel('BinaryChannel1', AMessage);
+      end;
+      if chkChannel2.Checked then
+      begin
+        FBroadcast.SendToChannel('BinaryChannel2', AMessage);
+      end;
+    finally
+      AMessage.Free;
     end;
     edtInput.Text := '';
   end;

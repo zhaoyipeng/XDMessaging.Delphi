@@ -7,7 +7,7 @@ uses
   XDMessaging.Serialization.Serializer;
 
 type
-  TTypedDataGram<T: class> = class(TInterfacedObject)
+  TTypedDataGram<T: class> = class
   private
     FDataGram: TDataGram;
     FObjectSerializer: TSerializer;

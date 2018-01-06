@@ -3,8 +3,11 @@ unit FormattedUserMessage;
 interface
 
 uses
-  System.SysUtils,
-  System.JSON.Serializers;
+  System.SysUtils
+  {$IFDEF XD_VER320_up}
+  , System.JSON.Serializers
+  {$ENDIF}
+  ;
 
 type
   TFormattedUserMessage = class
@@ -13,7 +16,8 @@ type
     FFormattedTextMessage: string;
     procedure SetFormattedTextMessage(const Value: string);
   public
-    constructor Create(const formatMessage: string; const Args: array of const);
+    constructor Create; overload;
+    constructor Create(const formatMessage: string; const Args: array of const); overload;
     property FormattedTextMessage: string read FFormattedTextMessage write SetFormattedTextMessage;
   end;
 
@@ -25,6 +29,11 @@ constructor TFormattedUserMessage.Create(const formatMessage: string;
   const Args: array of const);
 begin
   FFormattedTextMessage := Format(formatMessage, Args);
+end;
+
+constructor TFormattedUserMessage.Create;
+begin
+  FFormattedTextMessage := '';
 end;
 
 procedure TFormattedUserMessage.SetFormattedTextMessage(const Value: string);

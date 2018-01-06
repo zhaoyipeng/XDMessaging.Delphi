@@ -17,16 +17,24 @@ type
   private const
     AppVersion = '1.1';
   private
+    {$IFDEF XD_VER320_up}
     [JsonName('type')]
+    {$ENDIF}
     FAssemblyQualifiedName: string;
 
+    {$IFDEF XD_VER320_up}
     [JsonName('channel')]
+    {$ENDIF}
     FChannel: string;
 
+    {$IFDEF XD_VER320_up}
     [JsonName('message')]
+    {$ENDIF}
     FMessage: string;
 
+    {$IFDEF XD_VER320_up}
     [JsonName('ver')]
+    {$ENDIF}
     FVersion: string;
     procedure SetAssemblyQualifiedName(const Value: string);
     procedure SetChannel(const Value: string);

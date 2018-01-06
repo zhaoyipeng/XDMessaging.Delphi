@@ -6,8 +6,12 @@ uses
   Winapi.Windows,
   Winapi.ActiveX,
   System.SysUtils,
-  System.JSON.Serializers,
   XDMessaging.Serialization.Serializer,
+  {$IFDEF XD_VER320_up}
+  System.JSON.Serializers,
+  {$ELSE}
+  XSuperObject,
+  {$ENDIF}
   XDMessaging.Messages.DataGram;
 
 type
@@ -40,6 +44,7 @@ end;
 
 destructor TWinMsgDataGram.Destroy;
 begin
+  FDataGram.Free;
   if (FDataStruct.lpData <> nil) then
   begin
     if (FAllocatedMemory) then
