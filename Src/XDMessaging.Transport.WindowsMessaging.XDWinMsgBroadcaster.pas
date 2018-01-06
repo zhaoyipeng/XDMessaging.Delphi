@@ -60,12 +60,20 @@ var
   Handle: HWND;
 begin
   dataGram := TWinMsgDataGram.Create(FSerializer, channel, ADataType, AMessage);
-  dataStruct := dataGram.ToStruct();
-  filter := TWindowEnumFilter.Create(TXDWinMsgListener.GetChannelKey(channel));
-  winEnum := TWindowsEnum.Create(filter.WindowFilterHandler);
-  for Handle in winEnum.Enumerate do
-  begin
-    SendMessage(Handle, WM_COPYDATA, 0, LPARAM(@dataStruct));
+  try
+    dataStruct := dataGram.ToStruct();
+    filter := TWindowEnumFilter.Create(TXDWinMsgListener.GetChannelKey(channel));
+    winEnum := TWindowsEnum.Create(filter.WindowFilterHandler);
+    try
+      for Handle in winEnum.Enumerate do
+      begin
+        SendMessage(Handle, WM_COPYDATA, 0, LPARAM(@dataStruct));
+      end;
+    finally
+      winEnum.Free;
+    end;
+  finally
+    dataGram.Free;
   end;
 end;
 

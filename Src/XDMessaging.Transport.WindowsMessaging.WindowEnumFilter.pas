@@ -6,7 +6,7 @@ uses
   Winapi.Windows;
 
 type
-  TWindowEnumFilter = class(TInterfacedObject)
+  TWindowEnumFilter = record
   private
     FProperty: string;
   public

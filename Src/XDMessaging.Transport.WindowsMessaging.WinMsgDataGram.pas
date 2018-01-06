@@ -1,5 +1,7 @@
 unit XDMessaging.Transport.WindowsMessaging.WinMsgDataGram;
 
+{$I XDMessaging.inc}
+
 interface
 
 uses

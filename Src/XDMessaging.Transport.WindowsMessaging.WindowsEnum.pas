@@ -10,7 +10,7 @@ uses
 type
   WindowFilterHandler = procedure(Handle: HWND; var include: Boolean) of object;
 
-  TWindowsEnum = class(TInterfacedObject)
+  TWindowsEnum = class
   private
     FFilterHandler: WindowFilterHandler;
     FWinEnumList: TList<HWND> ;

@@ -1,10 +1,7 @@
 unit XDMessaging.Serialization.Serializer;
+{$I XDMessaging.inc}
 
 interface
-{$IF RTLVersion>=32}  // Rad Studio Tokyo
-{$XD_VER320_up}
-{$IFEND}
-
 uses
   {$IFDEF XD_VER320_up}
   System.JSON.Serializers

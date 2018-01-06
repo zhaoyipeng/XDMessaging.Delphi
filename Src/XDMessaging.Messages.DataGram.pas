@@ -1,7 +1,7 @@
 unit XDMessaging.Messages.DataGram;
 
 interface
-
+{$INCLUDE XDMessaging.inc}
 uses
   System.SysUtils,
   XDMessaging.Serialization.Serializer,
