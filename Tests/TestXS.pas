@@ -50,7 +50,7 @@ begin
   X.BlaBlaBla := ':)';
   SetLength(X.Arr, 0);
   s := X.AsJSON;
-  CheckEquals('', s);
+  CheckEquals('{"Type":"XType","Unit":2,"Filter":"*","Arr":null}', s);
 end;
 
 initialization
