@@ -16,7 +16,9 @@ uses
   XDMessaging.RegisterWithClient in '..\Src\XDMessaging.RegisterWithClient.pas',
   FormattedUserMessage in 'FormattedUserMessage.pas',
   XDMessaging.XDMessageEventArgs in '..\Src\XDMessaging.XDMessageEventArgs.pas',
-  XDMessaging.Messages.TypedDataGram in '..\Src\XDMessaging.Messages.TypedDataGram.pas';
+  XDMessaging.Messages.TypedDataGram in '..\Src\XDMessaging.Messages.TypedDataGram.pas',
+  XDMessaging.FileSystemWatcher in '..\Src\XDMessaging.FileSystemWatcher.pas',
+  XDMessaging.Transport.IOStream.XDIOStreamBroadcaster in '..\Src\XDMessaging.Transport.IOStream.XDIOStreamBroadcaster.pas';
 
 {$R *.res}
 
