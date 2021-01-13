@@ -11,3 +11,10 @@ compile lower than 10.2, you should download XSuperObject from https://github.co
 The origin C# version license: https://github.com/TheCodeKing/XDMessaging.Net/blob/master/License
 
 The delphi version is also licensed under MIT license.
+
+
+# Site Links
+	
+## [learndelphi](//learndelphi.org)
+
+## [embarcadero](//embarcadero.com)
